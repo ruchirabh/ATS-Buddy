@@ -4,7 +4,7 @@ import logging
 import sys
 
 from app.config import Config
-from app.extensions import db
+from app.extensions import db, jwt
 
 # Configure logging
 logging.basicConfig(
@@ -24,6 +24,7 @@ def create_app(config_class=Config):
 
     # Initialize extensions
     db.init_app(app)
+    jwt.init_app(app)
 
     # Register blueprints
     from app.routes import register_blueprints
